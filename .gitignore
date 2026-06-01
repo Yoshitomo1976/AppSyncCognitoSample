@@ -18,6 +18,8 @@
 mono_crash.*
 
 # Build results
+bin/
+obj/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -427,3 +429,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+.vs/
+*.user
+*.suo

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppSyncCognitoSample.Application\AppSyncCognitoSample.Application.csproj" />
+    <ProjectReference Include="..\AppSyncCognitoSample.Shared\AppSyncCognitoSample.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DynamoDb\" />
+  </ItemGroup>
+
+</Project>
