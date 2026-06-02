@@ -1,0 +1,20 @@
+{
+  "arguments": {
+    "input": {
+      "title": "test title",
+      "body": "test body"
+    }
+  },
+  "identity": {
+    "username": "test-user",
+    "claims": {
+      "sub": "11111111-2222-3333-4444-555555555555",
+      "email": "test-user@example.com",
+      "cognito:username": "test-user"
+    }
+  },
+  "info": {
+    "fieldName": "saveUserInput",
+    "parentTypeName": "Mutation"
+  }
+}

@@ -1,0 +1,27 @@
+type Mutation {
+  saveUserInput(input: SaveUserInput!): SaveUserInputResult!
+}
+
+input SaveUserInput {
+  title: String!
+  body: String
+}
+
+type SaveUserInputResult {
+  id: ID!
+  userSub: String!
+  username: String
+  email: String
+  title: String!
+  body: String
+  createdAt: String!
+}
+
+type Query {
+  health: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
