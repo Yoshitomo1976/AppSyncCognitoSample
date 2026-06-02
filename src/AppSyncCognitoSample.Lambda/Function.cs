@@ -1,22 +1,37 @@
 using Amazon.Lambda.Core;
+using AppSyncCognitoSample.Application.Interfaces;
+using AppSyncCognitoSample.Shared.AppSync;
+using AppSyncCognitoSample.Shared.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
 namespace AppSyncCognitoSample.Lambda
 {
-    public class Function
+    public sealed class Function
     {
+        private readonly IServiceProvider _serviceProvider;
 
-        /// <summary>
-        /// A simple function that takes a string and does a ToUpper
-        /// </summary>
-        /// <param name="input">The event for the Lambda function handler to process.</param>
-        /// <param name="context">The ILambdaContext that provides methods for logging and describing the Lambda environment.</param>
-        /// <returns></returns>
-        public string FunctionHandler(string input, ILambdaContext context)
+        public Function()
+            : this(ServiceProviderFactory.Create())
         {
-            return input.ToUpper();
+        }
+
+        // Constructor for unit tests.
+        public Function(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
+        public async Task<SaveUserInputResult> FunctionHandler(AppSyncRequest request, ILambdaContext context)
+        {
+            using var scope = _serviceProvider.CreateScope();
+            var service = scope.ServiceProvider.GetRequiredService<IUserInputService>();
+
+            context.Logger.LogInformation($"Handling AppSync field: {request.Info?.ParentTypeName}.{request.Info?.FieldName}");
+
+            return await service.SaveAsync(request, CancellationToken.None).ConfigureAwait(false);
         }
     }
 }

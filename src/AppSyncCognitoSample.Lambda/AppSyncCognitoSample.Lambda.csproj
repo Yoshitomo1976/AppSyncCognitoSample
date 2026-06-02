@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.Core" Version="2.8.1" />
     <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppSyncCognitoSample.Application\AppSyncCognitoSample.Application.csproj" />
