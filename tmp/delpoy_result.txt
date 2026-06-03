@@ -1,0 +1,123 @@
+
+sam deploy
+
+        Managed S3 bucket: aws-sam-cli-managed-default-samclisourcebucket-rum5b6ozhs3v
+        Auto resolution of buckets can be turned off by setting resolve_s3=False
+        To use a specific S3 bucket, set --s3-bucket=<bucket_name>
+        Above settings can be stored in samconfig.toml
+                                                                                                                                                           
+        File with same data already exists at appsync-cognito-sample/f20c71bc6dbd4da19cec86f9f69de4e9, skipping upload                                     
+                                                                                                                                                           
+        File with same data already exists at appsync-cognito-sample/d90f2618591f5408f72f5f9086e6bb5b, skipping upload                                     
+
+        Deploying with following values
+        ===============================
+        Stack name                   : appsync-cognito-sample
+        Region                       : ap-northeast-1
+        Confirm changeset            : True
+        Disable rollback             : True
+        Deployment s3 bucket         : aws-sam-cli-managed-default-samclisourcebucket-rum5b6ozhs3v
+        Capabilities                 : ["CAPABILITY_NAMED_IAM"]
+        Parameter overrides          : {}
+        Signing Profiles             : {}
+
+Initiating deployment
+=====================
+
+                                                                                                                                                           
+        File with same data already exists at appsync-cognito-sample/4dd8d5d68cb3b85d55e10a6d4c04e56d.template, skipping upload                            
+
+
+Waiting for changeset to be created..
+
+CloudFormation stack changeset
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Operation                             LogicalResourceId                     ResourceType                          Replacement                         
+-----------------------------------------------------------------------------------------------------------------------------------------------------
++ Add                                 AppSyncInvokeLambdaRole               AWS::IAM::Role                        N/A                                 
++ Add                                 CognitoUserPoolClient                 AWS::Cognito::UserPoolClient          N/A                                 
++ Add                                 CognitoUserPool                       AWS::Cognito::UserPool                N/A                                 
++ Add                                 GraphQLApi                            AWS::AppSync::GraphQLApi              N/A                                 
++ Add                                 GraphQLSchema                         AWS::AppSync::GraphQLSchema           N/A                                 
++ Add                                 SaveUserInputDataSource               AWS::AppSync::DataSource              N/A                                 
++ Add                                 SaveUserInputFunctionRole             AWS::IAM::Role                        N/A                                 
++ Add                                 SaveUserInputFunction                 AWS::Lambda::Function                 N/A                                 
++ Add                                 SaveUserInputResolver                 AWS::AppSync::Resolver                N/A                                 
++ Add                                 UserInputsTable                       AWS::DynamoDB::Table                  N/A                                 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Changeset created successfully. arn:aws:cloudformation:ap-northeast-1:203413543799:changeSet/samcli-deploy1780451203/10514486-6969-48c9-af43-2f74c453ab35
+
+
+Previewing CloudFormation changeset before deployment
+======================================================
+Deploy this changeset? [y/N]: y
+
+2026-06-03 01:46:58 - Waiting for stack create/update to complete
+
+CloudFormation events from stack operations (refresh every 5.0 seconds)
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ResourceStatus                        ResourceType                          LogicalResourceId                     ResourceStatusReason                
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE_IN_PROGRESS                    AWS::CloudFormation::Stack            appsync-cognito-sample                User Initiated                      
+CREATE_IN_PROGRESS                    AWS::Cognito::UserPool                CognitoUserPool                       -                                   
+CREATE_IN_PROGRESS                    AWS::DynamoDB::Table                  UserInputsTable                       -                                   
+CREATE_IN_PROGRESS                    AWS::DynamoDB::Table                  UserInputsTable                       Resource creation Initiated         
+CREATE_IN_PROGRESS                    AWS::Cognito::UserPool                CognitoUserPool                       Resource creation Initiated         
+CREATE_COMPLETE                       AWS::Cognito::UserPool                CognitoUserPool                       -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::GraphQLApi              GraphQLApi                            -                                   
+CREATE_IN_PROGRESS                    AWS::Cognito::UserPoolClient          CognitoUserPoolClient                 -                                   
+CREATE_IN_PROGRESS                    AWS::Cognito::UserPoolClient          CognitoUserPoolClient                 Resource creation Initiated         
+CREATE_IN_PROGRESS                    AWS::AppSync::GraphQLApi              GraphQLApi                            Resource creation Initiated         
+CREATE_COMPLETE                       AWS::Cognito::UserPoolClient          CognitoUserPoolClient                 -                                   
+CREATE_COMPLETE                       AWS::AppSync::GraphQLApi              GraphQLApi                            -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::GraphQLSchema           GraphQLSchema                         -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::GraphQLSchema           GraphQLSchema                         Resource creation Initiated         
+CREATE_COMPLETE                       AWS::AppSync::GraphQLSchema           GraphQLSchema                         -                                   
+CREATE_COMPLETE                       AWS::DynamoDB::Table                  UserInputsTable                       -                                   
+CREATE_IN_PROGRESS                    AWS::IAM::Role                        SaveUserInputFunctionRole             -                                   
+CREATE_IN_PROGRESS                    AWS::IAM::Role                        SaveUserInputFunctionRole             Resource creation Initiated         
+CREATE_COMPLETE                       AWS::IAM::Role                        SaveUserInputFunctionRole             -                                   
+CREATE_IN_PROGRESS                    AWS::Lambda::Function                 SaveUserInputFunction                 -                                   
+CREATE_IN_PROGRESS                    AWS::Lambda::Function                 SaveUserInputFunction                 Resource creation Initiated         
+CREATE_COMPLETE                       AWS::Lambda::Function                 SaveUserInputFunction                 -                                   
+CREATE_IN_PROGRESS                    AWS::IAM::Role                        AppSyncInvokeLambdaRole               -                                   
+CREATE_IN_PROGRESS                    AWS::IAM::Role                        AppSyncInvokeLambdaRole               Resource creation Initiated         
+CREATE_COMPLETE                       AWS::IAM::Role                        AppSyncInvokeLambdaRole               -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::DataSource              SaveUserInputDataSource               -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::DataSource              SaveUserInputDataSource               Resource creation Initiated         
+CREATE_COMPLETE                       AWS::AppSync::DataSource              SaveUserInputDataSource               -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::Resolver                SaveUserInputResolver                 -                                   
+CREATE_IN_PROGRESS                    AWS::AppSync::Resolver                SaveUserInputResolver                 Resource creation Initiated         
+CREATE_COMPLETE                       AWS::AppSync::Resolver                SaveUserInputResolver                 -                                   
+CREATE_COMPLETE                       AWS::CloudFormation::Stack            appsync-cognito-sample                -                                   
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+CloudFormation outputs from deployed stack
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Outputs                                                                                                                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Key                 GraphQLApiId                                                                                                                       
+Description         -                                                                                                                                  
+Value               vqipl3gqfrfgzlp3a3bgypnkne                                                                                                         
+
+Key                 UserPoolClientId                                                                                                                   
+Description         -                                                                                                                                  
+Value               3q4ge5tajam34f8lolkd63s08g                                                                                                         
+
+Key                 UserPoolId                                                                                                                         
+Description         -                                                                                                                                  
+Value               ap-northeast-1_rhB6pJnxZ                                                                                                           
+
+Key                 UserInputsTableName                                                                                                                
+Description         -                                                                                                                                  
+Value               appsync-cognito-sample-UserInputs                                                                                                  
+
+Key                 GraphQLApiUrl                                                                                                                      
+Description         -                                                                                                                                  
+Value               https://dfa73cvxhjerxiqkxbnr4otcxm.appsync-api.ap-northeast-1.amazonaws.com/graphql                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Successfully created/updated stack - appsync-cognito-sample in ap-northeast-1
