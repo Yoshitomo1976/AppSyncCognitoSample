@@ -24,7 +24,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSyncCognitoSample.Shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSyncCognitoSample.ConsoleClientTest", "tests\AppSyncCognitoSample.ConsoleClientTest\AppSyncCognitoSample.ConsoleClientTest.csproj", "{58D6B313-902C-4913-BD22-AAA7515E493F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSyncCognitoSample.Client.Core", "tests\AppSyncCognitoSample.Client.Core\AppSyncCognitoSample.Client.Core.csproj", "{263DA0B1-1C88-44B5-A460-E1B851A213F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSyncCognitoSample.Client.Core", "src\AppSyncCognitoSample.Client.Core\AppSyncCognitoSample.Client.Core.csproj", "{263DA0B1-1C88-44B5-A460-E1B851A213F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{556A274E-D495-477B-9353-6DDF2029A5E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSyncCognitoSample.DynamoDbViewer.WinForms", "tools\DynamoDbViewer\AppSyncCognitoSample.DynamoDbViewer.WinForms\AppSyncCognitoSample.DynamoDbViewer.WinForms.csproj", "{83C0AFAD-67AC-4C79-8E97-86FF3C05B53D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSyncCognitoSample.DynamoDbViewer.Core", "tools\DynamoDbViewer\AppSyncCognitoSample.DynamoDbViewer.Core\AppSyncCognitoSample.DynamoDbViewer.Core.csproj", "{DF35841C-A317-4698-85A0-CCD74C476E5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DynamoDbViewer", "DynamoDbViewer", "{D85A3564-2C20-42C6-A0CB-999AA9FD2EDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +64,14 @@ Global
 		{263DA0B1-1C88-44B5-A460-E1B851A213F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263DA0B1-1C88-44B5-A460-E1B851A213F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{263DA0B1-1C88-44B5-A460-E1B851A213F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C0AFAD-67AC-4C79-8E97-86FF3C05B53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C0AFAD-67AC-4C79-8E97-86FF3C05B53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C0AFAD-67AC-4C79-8E97-86FF3C05B53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C0AFAD-67AC-4C79-8E97-86FF3C05B53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF35841C-A317-4698-85A0-CCD74C476E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF35841C-A317-4698-85A0-CCD74C476E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF35841C-A317-4698-85A0-CCD74C476E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF35841C-A317-4698-85A0-CCD74C476E5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +82,10 @@ Global
 		{470F5CE9-C569-44BA-BBF1-6B6F114F9466} = {49273DD1-9803-4ACD-A13E-C3D64A93698A}
 		{6BD02B7E-798C-461A-81F9-8BB4236A3F1A} = {49273DD1-9803-4ACD-A13E-C3D64A93698A}
 		{58D6B313-902C-4913-BD22-AAA7515E493F} = {A13CEA71-E8F9-474C-A5E5-C5138F1C6394}
-		{263DA0B1-1C88-44B5-A460-E1B851A213F6} = {A13CEA71-E8F9-474C-A5E5-C5138F1C6394}
+		{263DA0B1-1C88-44B5-A460-E1B851A213F6} = {49273DD1-9803-4ACD-A13E-C3D64A93698A}
+		{83C0AFAD-67AC-4C79-8E97-86FF3C05B53D} = {D85A3564-2C20-42C6-A0CB-999AA9FD2EDC}
+		{DF35841C-A317-4698-85A0-CCD74C476E5A} = {D85A3564-2C20-42C6-A0CB-999AA9FD2EDC}
+		{D85A3564-2C20-42C6-A0CB-999AA9FD2EDC} = {556A274E-D495-477B-9353-6DDF2029A5E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8B0FC23-E014-4557-8119-11B687E770C6}
