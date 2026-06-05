@@ -23,6 +23,8 @@ public sealed class HostedUiOptions
     /// </summary>
     public string RedirectUri { get; set; } = "http://localhost:51789/callback/";
 
+    public string LogoutUri { get; set; } = "http://localhost:51789/signout/";
+
     /// <summary>
     /// 要求する OAuth scope です。
     /// 例: openid, email, profile

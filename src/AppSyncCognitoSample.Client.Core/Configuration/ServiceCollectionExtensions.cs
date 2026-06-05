@@ -3,6 +3,7 @@ using Amazon.CognitoIdentityProvider;
 using AppSyncCognitoSample.Client.Core;
 using AppSyncCognitoSample.ClientCore.AppSync;
 using AppSyncCognitoSample.ClientCore.Authentication;
+using AppSyncCognitoSample.ClientCore.Authentication.HostedUi;
 using AppSyncCognitoSample.ClientCore.TokenStorage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,9 @@ public static class ServiceCollectionExtensions
         services.Configure<AwsClientOptions>(
             configuration.GetSection("Aws"));
 
+        services.Configure<HostedUiOptions>(
+            configuration.GetSection("HostedUi"));
+
         services.AddSingleton<ITokenStore, InMemoryTokenStore>();
 
         services.AddSingleton<IAmazonCognitoIdentityProvider>(provider =>
@@ -34,6 +38,8 @@ public static class ServiceCollectionExtensions
         services.AddHttpClient<IAppSyncClient, AppSyncClient>();
 
         services.AddSingleton<ICognitoAuthService, CognitoAuthService>();
+
+        services.AddSingleton<IHostedUiAuthService, HostedUiAuthService>();
 
         return services;
     }

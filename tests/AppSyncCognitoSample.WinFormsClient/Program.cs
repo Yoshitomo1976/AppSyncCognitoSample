@@ -1,8 +1,10 @@
 using AppSyncCognitoSample.ClientCore.AppSync;
 using AppSyncCognitoSample.ClientCore.Authentication;
+using AppSyncCognitoSample.ClientCore.Authentication.HostedUi;
 using AppSyncCognitoSample.ClientCore.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net;
 
 namespace AppSyncCognitoSample.WinFormsClient
 {
@@ -14,7 +16,11 @@ namespace AppSyncCognitoSample.WinFormsClient
         [STAThread]
         static void Main()
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebRequest.DefaultWebProxy!.Credentials = new NetworkCredential("yoshitomo.takahashi.y5@mail.toray", "T0rayacs");
+
             ICognitoAuthService authService;
+            IHostedUiAuthService hostedUiAuthService;
             IAppSyncClient appSyncClient;
             try
             {
@@ -30,6 +36,7 @@ namespace AppSyncCognitoSample.WinFormsClient
                 var serviceProvider = services.BuildServiceProvider();
 
                 authService = serviceProvider.GetRequiredService<ICognitoAuthService>();
+                hostedUiAuthService = serviceProvider.GetRequiredService<IHostedUiAuthService>();
                 appSyncClient = serviceProvider.GetRequiredService<IAppSyncClient>();
             }
             catch (Exception ex)
@@ -42,7 +49,7 @@ namespace AppSyncCognitoSample.WinFormsClient
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormMain(authService, appSyncClient));
+            Application.Run(new FormMain(authService, hostedUiAuthService, appSyncClient));
         }
     }
 }

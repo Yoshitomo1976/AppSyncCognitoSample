@@ -1,6 +1,9 @@
 using AppSyncCognitoSample.ClientCore.AppSync;
 using AppSyncCognitoSample.ClientCore.Authentication;
+using AppSyncCognitoSample.ClientCore.Authentication.HostedUi;
 using AppSyncCognitoSample.ClientCore.Models;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
@@ -9,6 +12,7 @@ namespace AppSyncCognitoSample.WinFormsClient
     public partial class FormMain : Form
     {
         private readonly ICognitoAuthService _authService;
+        private readonly IHostedUiAuthService _hostedUiAuthService;
         private readonly IAppSyncClient _appSyncClient;
 
         //========================================================================================
@@ -18,10 +22,11 @@ namespace AppSyncCognitoSample.WinFormsClient
         //
         //	説明	：
         //========================================================================================
-        public FormMain(ICognitoAuthService authService, IAppSyncClient appSyncClient)
+        public FormMain(ICognitoAuthService authService, IHostedUiAuthService hostedUiAuthService, IAppSyncClient appSyncClient)
         {
             _appSyncClient = appSyncClient;
             _authService = authService;
+            _hostedUiAuthService = hostedUiAuthService;
             InitializeComponent();
         }
 
@@ -85,6 +90,49 @@ namespace AppSyncCognitoSample.WinFormsClient
         }
 
         //========================================================================================
+        //	関数名	：btnHostedUiLogin_Click
+        //
+        //	戻り値	：void
+        //
+        //	説明	：
+        //========================================================================================
+        private async void btnHostedUiLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var token = await _hostedUiAuthService.LoginAsync();
+                _lblToken.Text = token.IdToken;
+                btnSave.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                _lblToken.Text = string.Empty;
+                btnSave.Enabled = false;
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        //========================================================================================
+        //	関数名	：btnHostedUiLogout_Click
+        //
+        //	戻り値	：void
+        //
+        //	説明	：
+        //========================================================================================
+        private async void btnHostedUiLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await _hostedUiAuthService.LogoutAsync();
+                btnSave.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        //========================================================================================
         //	関数名	：btnSave_Click
         //
         //	戻り値	：void
@@ -98,7 +146,7 @@ namespace AppSyncCognitoSample.WinFormsClient
                 var result = await _appSyncClient.SaveUserInputAsync(
                     new UserInputPayload
                     {
-                        Title = _txtTitle.Text  ?? string.Empty,
+                        Title = _txtTitle.Text ?? string.Empty,
                         Body = _txtBody.Text ?? string.Empty
                     });
 
@@ -109,5 +157,6 @@ namespace AppSyncCognitoSample.WinFormsClient
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
     }
 }

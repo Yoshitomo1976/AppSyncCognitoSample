@@ -18,7 +18,7 @@ public sealed class LocalCallbackResult
 /// </summary>
 public sealed class LocalCallbackServer
 {
-    public async Task<LocalCallbackResult> WaitForCallbackAsync(
+    public async Task<LocalCallbackResult> WaitForAuthorizationCodeAsync(
         string redirectUri,
         string expectedState,
         TimeSpan timeout,
@@ -117,6 +117,11 @@ public sealed class LocalCallbackServer
                 listener.Stop();
             }
         }
+    }
+
+    public async Task<LocalCallbackResult> WaitForLogoutCallbackAsync()
+    {
+        throw new NotSupportedException();
     }
 
     private static string NormalizeHttpListenerPrefix(string redirectUri)

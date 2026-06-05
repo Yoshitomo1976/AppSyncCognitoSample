@@ -7,6 +7,8 @@ public interface IHostedUiAuthService
     /// </summary>
     Task<OAuthTokenResult> LoginAsync(CancellationToken cancellationToken = default);
 
+    Task LogoutAsync(CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Refresh Token を使って ID Token / Access Token を再取得します。
     /// </summary>
